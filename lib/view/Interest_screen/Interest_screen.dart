@@ -3,6 +3,7 @@ import 'package:flutter_application_1/Utilits/constants/colorconstant.dart';
 import 'package:flutter_application_1/Utilits/constants/text_constants.dart';
 import 'package:flutter_application_1/view/verify_screen/Verify_screen.dart';
 import 'package:flutter_application_1/widgets/custom_button.dart';
+import 'package:flutter_application_1/widgets/interest_categories.dart';
 
 
 class InterestsCategoriesWidget extends StatefulWidget {
@@ -17,105 +18,7 @@ class _InterestsCategoriesWidgetState extends State<InterestsCategoriesWidget> {
   final TextEditingController customInterestController = TextEditingController();
 final List<String> customInterests = [];
 
-  final Map<String, List<String>> interestCategories = {
-    'Education': [
-      'NIOS',
-      'Online Learning',
-      'School Life',
-      'College Students',
-      'Tuition & Coaching',
-      'Skill Development',
-      'Competitive Exams (NEET, UPSC, SSC)',
-      'Spoken English',
-      'Study Abroad',
-    ],
-    'Technology': [
-      'Smartphones',
-      'Mobile Apps',
-      'Gadgets',
-      'Internet Tips',
-      'Digital Payments',
-      'AI & ChatGPT',
-      'Coding / Programming',
-      'Web Development',
-      'Ethical Hacking',
-    ],
-    'Lifestyle': [
-      'Travel',
-      'Fashion',
-      'Health & Fitness',
-      'Beauty & Makeup',
-      'Food & Cooking',
-      'Photography',
-      'Parenting',
-      'Journaling',
-      'Minimalism',
-    ],
-    'Entertainment': [
-      'Gaming (Mobile/PC/Console)',
-      'Anime',
-      'Cartoons',
-      'Memes & Funny Videos',
-      'Movies',
-      'TV Shows',
-      'Stand-up Comedy',
-      'Music & Singing',
-      'Dance & Reels',
-    ],
-    'Career & Money': [
-      'Government Jobs',
-      'Part-time Jobs',
-      'Freelancing',
-      'Internships',
-      'Work From Home',
-      'Side Hustles',
-      'Resume Building',
-      'Business Ideas',
-      'Investment & Savings',
-    ],
-    'Social & Media': [
-      'WhatsApp Status',
-      'YouTube Shorts / Vlogs',
-      'Instagram Reels',
-      'TikTok (if regionally used)',
-      'Snapchat Content',
-      'ShareChat Content',
-      'Influencer Marketing',
-      'Affiliate Marketing',
-      'Blogging & Vlogging',
-    ],
-    'Personal Growth': [
-      'Motivation',
-      'Time Management',
-      'Goal Setting',
-      'Self-Discipline',
-      'Public Speaking',
-      'Meditation / Mindfulness',
-      'Productivity Tools',
-      'Reading / Book Summaries',
-    ],
-    'Regional & Cultural': [
-      'Malayalam Content',
-      'Tamil Content',
-      'Hindi Content',
-      'Kerala Local News',
-      'Tamil Nadu Updates',
-      'Indian Culture & Festivals',
-      'Village Life',
-      'Art & Handicrafts',
-    ],
-    'Wellbeing & Awareness': [
-      'Mental Health',
-      'Physical Wellness',
-      'Clean Living',
-      'Women\'s Health',
-      'Youth Guidance',
-      'Toxic Parenting Awareness',
-      'Study Motivation',
-    ],
-  };
-
-  final Set<String> selectedInterests = {};
+final Set<String> selectedInterests = {};
   void _addCustomInterest() {
   final text = customInterestController.text.trim();
   if (text.isNotEmpty && !selectedInterests.contains(text)) {
@@ -126,9 +29,7 @@ final List<String> customInterests = [];
     });
   }
 }
-
-
-  @override
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(TextConstants.intcat)),
@@ -260,9 +161,7 @@ const SizedBox(height: 16),
     ),
   ),
 ),
-
-           
-          ],
+ ],
         ),
       ),
     );

@@ -11,6 +11,8 @@ class Colorconstants {
    static const Color darkblue=Color.fromARGB(255, 5, 106, 188);
    static const Color darkviolet=Color.fromARGB(244, 198, 7, 251);
    static const Color grey300=Color.fromARGB(255, 213, 211, 211);
+   static const Color red=Colors.red;
+   static const Color gold=Colors.amber;
 
 
 

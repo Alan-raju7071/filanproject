@@ -20,21 +20,7 @@ import 'package:flutter_application_1/widgets/User_details_container.dart';
 import 'package:flutter_application_1/widgets/custom_button.dart';
 import 'package:flutter_application_1/widgets/linear_indicator_with_text.dart';
 import 'package:image_picker/image_picker.dart';
-
-
-
-
-
- 
-
 import 'package:intl/intl.dart';
-
-
-
-
-
-
-
 String? formatDateAndAge(DateTime date) {
   final now = DateTime.now();
   int age = now.year - date.year;
@@ -64,9 +50,7 @@ List<String> qualificationOptions = [
   'Other'
 ];
 bool showQualificationDropdown = false;
-
-
-  final TextEditingController occupationController = TextEditingController();
+final TextEditingController occupationController = TextEditingController();
   final TextEditingController otherQualificationController = TextEditingController();
   final TextEditingController dobController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
@@ -78,12 +62,7 @@ final TextEditingController passwordController = TextEditingController();
 final TextEditingController confirmPasswordController = TextEditingController();
 final TextEditingController emailController = TextEditingController();
 final TextEditingController nameController = TextEditingController();
-
-
-
-
-
-  final _formKey = GlobalKey<FormState>();
+final _formKey = GlobalKey<FormState>();
  String city = '', state = '', pincode = '';
   String? selectedGender;
   File? profileImage;
@@ -91,9 +70,7 @@ final TextEditingController nameController = TextEditingController();
   String? selectedCountry;
   String? verificationId;
 bool otpSent = false;
-
-
-  String? getFinalQualification() {
+ String? getFinalQualification() {
     final trimmed = otherQualificationController.text.trim();
     return trimmed.isNotEmpty ? trimmed : null;
   }
@@ -117,10 +94,7 @@ bool otpSent = false;
     timeout: const Duration(seconds: 60),
   );
 }
-
-  
-
-  Future<void> pickImage() async {
+ Future<void> pickImage() async {
     try {
       if (kIsWeb) {
         final result = await FilePicker.platform.pickFiles(type: FileType.image);
@@ -214,12 +188,10 @@ void showMessage(String message) {
     super.dispose();
     mobileController.dispose();
     nameController.dispose();
-
-otpController.dispose();
+    otpController.dispose();
 
   }
-
-  @override
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -242,8 +214,6 @@ otpController.dispose();
                 const Text(TextConstants.createacc,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 20),
-                
-
                 Center(
                   child: ProfileImagePicker(
                     webImageBytes: webImageBytes,
@@ -269,10 +239,11 @@ otpController.dispose();
     sendOtp();
   },
 ),
-
-
-                const SizedBox(height: 20),
-                const Text(TextConstants.locat, style: TextStyle(fontWeight: FontWeight.bold)),
+const SizedBox(height: 20),
+                 Column(
+                   children: [
+                     Text(TextConstants.locat, style: TextStyle(fontWeight: FontWeight.bold)),
+                 
                 const SizedBox(height: 6),
                 TextFormField(
                   controller: locationController,
@@ -309,8 +280,7 @@ otpController.dispose();
     ),
   ],
 ),
-
-                const SizedBox(height: 12),
+const SizedBox(height: 12),
                 const Text(TextConstants.addres,
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 const SizedBox(height: 6),
@@ -320,18 +290,12 @@ otpController.dispose();
                     labelText: "Street, Building, etc.",
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
-                    
-                  ),
+                    ),
                   validator: (value) => value == null || value.trim().isEmpty ? 'Please enter your address' : null,
-                  
-                  
-                ),
-                
-                
-                
-                
-            
-            Column(
+                  ),
+                   ]
+                 ),
+                Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                const SizedBox(height: 20),
@@ -387,10 +351,7 @@ if (showQualificationDropdown)
       },
     ),
   ),
-
-
-               
-              ],
+],
             ),
             const SizedBox(height: 20),
                 const Text(TextConstants.occupation, style: TextStyle(fontWeight: FontWeight.bold)),
@@ -430,7 +391,6 @@ TextFormField(
     return null;
   },
 ),
-
 const SizedBox(height: 16),
 const Text("Confirm Password", style: TextStyle(fontWeight: FontWeight.bold)),
 const SizedBox(height: 6),
@@ -473,8 +433,7 @@ TextFormField(
       showMessage("Please enter a valid 6-digit OTP.");
       return;
     }
-
-    try {
+   try {
       final credential = PhoneAuthProvider.credential(
         verificationId: verificationId!,
         smsCode: otpController.text.trim(),
@@ -485,9 +444,7 @@ TextFormField(
       showMessage("Invalid OTP. Please try again.");
       return;
     }
-
-  
-    final imageUrl = await SignupController.uploadProfileImage(
+final imageUrl = await SignupController.uploadProfileImage(
       fileImage: profileImage,
       webImageBytes: webImageBytes,
     );
@@ -505,8 +462,7 @@ TextFormField(
       imageUrl: imageUrl,
       password: passwordController.text.trim(),
     );
-
-    if (success) {
+  if (success) {
       showMessage("Signup data saved successfully!");
       Navigator.push(
         context,
@@ -517,8 +473,7 @@ TextFormField(
     }
   }
 },
-
- child: CustomButton(
+child: CustomButton(
                       text: TextConstants.continu,
                       color: Colorconstants.primaryblue,
                     ),

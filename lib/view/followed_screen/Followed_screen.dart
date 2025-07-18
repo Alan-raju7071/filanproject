@@ -6,17 +6,12 @@ import 'package:flutter_application_1/view/Splash_screen/Splash_screen.dart';
 import 'package:flutter_application_1/widgets/Custom_image_container.dart';
 import 'package:flutter_application_1/widgets/FollowCard.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-
-
-
 class FollowScreen extends StatefulWidget {
   const FollowScreen({Key? key}) : super(key: key);
 
   @override
   State<FollowScreen> createState() => _FollowScreenState();
 }
-
 class _FollowScreenState extends State<FollowScreen> {
   Future<void> _launchURL(String url) async {
   final Uri uri = Uri.parse(url);
@@ -24,15 +19,11 @@ class _FollowScreenState extends State<FollowScreen> {
     throw Exception('Could not launch $url');
   }
 }
-
-  List<bool> followed = [false, false, false, false];
-
-  @override
+List<bool> followed = [false, false, false, false];
+ @override
   Widget build(BuildContext context) {
     int completed = followed.where((f) => f).length;
-
-    return Scaffold(
-      
+return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: SingleChildScrollView(
@@ -46,7 +37,6 @@ class _FollowScreenState extends State<FollowScreen> {
               SizedBox(height: 10,),
               Text(TextConstants.getstart),
               SizedBox(height: 10,),
-              
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -57,12 +47,9 @@ class _FollowScreenState extends State<FollowScreen> {
               const SizedBox(height: 8),
               LinearProgressIndicator(value: completed / 4),
               const SizedBox(height: 16),
-          
-              
-              ListView(
+             ListView(
                 physics: const NeverScrollableScrollPhysics(), 
                  shrinkWrap: true, 
-                
                 children: [
                   FacebookCard(
                     followe: TextConstants.follow,
@@ -77,8 +64,7 @@ class _FollowScreenState extends State<FollowScreen> {
     setState(() {
       followed[0] = true;
     });
-  },
-                  ),
+  }, ),
                   FacebookCard(
   followe: TextConstants.follow,
   tile: TextConstants.instatitle,
@@ -94,9 +80,7 @@ class _FollowScreenState extends State<FollowScreen> {
     });
   },
 ),
-
-                  
-                   FacebookCard(
+FacebookCard(
                     followe: TextConstants.subscribe,
                     tile: TextConstants.yutibtitle,
                     subtitles: TextConstants.yotubsubtitle,
@@ -110,8 +94,7 @@ class _FollowScreenState extends State<FollowScreen> {
       followed[2] = true;
     });
   },
-                    
-                  ),
+    ),
                    FacebookCard(
                     followe: TextConstants.join,
                     tile: TextConstants.watstitle,
@@ -129,7 +112,6 @@ class _FollowScreenState extends State<FollowScreen> {
                   ),
                    ],
               ),
-              
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),    
                 child: Text(TextConstants.followabove),
@@ -143,7 +125,7 @@ class _FollowScreenState extends State<FollowScreen> {
           );
         }
       : null,
-                child: Padding(
+        child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Container(
                     width: double.infinity,
@@ -152,13 +134,10 @@ class _FollowScreenState extends State<FollowScreen> {
                        borderRadius: BorderRadius.circular(5)
                     ),
                     padding: EdgeInsets.symmetric(vertical: 10,),
-                   
-                    child: Center(child: Text("Complete all follows to continue",style: TextStyle(fontWeight: FontWeight.bold,color: Colorconstants.darkgrey),)),
-                  
+                   child: Center(child: Text("Complete all follows to continue",style: TextStyle(fontWeight: FontWeight.bold,color: Colorconstants.darkgrey),)),
                   ),
                 ))
-              
-            ],
+              ],
           ),
         ),
       ),
